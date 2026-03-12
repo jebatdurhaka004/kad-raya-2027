@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kad Raya Digital Pro</title>
+
+<style>
+
+body{
+margin:0;
+font-family:sans-serif;
+background:linear-gradient(135deg,#065f46,#022c22);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+color:white;
+overflow:hidden;
+}
+
+.card{
+background:white;
+color:black;
+padding:30px;
+border-radius:20px;
+width:340px;
+text-align:center;
+box-shadow:0 10px 40px rgba(0,0,0,0.4);
+animation:fade 1s ease;
+}
+
+h1{
+margin-top:0;
+}
+
+input{
+width:90%;
+padding:10px;
+margin-top:8px;
+border-radius:8px;
+border:1px solid #ddd;
+}
+
+button{
+margin-top:15px;
+padding:12px 20px;
+border:none;
+background:#16a34a;
+color:white;
+border-radius:10px;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#15803d;
+}
+
+@keyframes fade{
+from{opacity:0;transform:scale(0.9)}
+to{opacity:1;transform:scale(1)}
+}
+
+.confetti{
+position:fixed;
+width:8px;
+height:8px;
+top:-10px;
+animation:fall linear infinite;
+}
+
+@keyframes fall{
+to{
+transform:translateY(100vh) rotate(360deg);
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>🌙 Selamat Hari Raya</h1>
+
+<p>Maaf Zahir & Batin</p>
+
+<input id="penerima" placeholder="Nama penerima">
+
+<input id="pengirim" placeholder="Nama anda">
+
+<button onclick="hantar()">Hantar WhatsApp</button>
+
+</div>
+
+<audio autoplay loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">
+</audio>
+
+<script>
+
+function hantar(){
+
+let penerima=document.getElementById("penerima").value
+let pengirim=document.getElementById("pengirim").value
+
+let mesej=
+"🌙 Selamat Hari Raya "+penerima+
+"%0A%0AMaaf Zahir dan Batin%0A%0AIkhlas daripada: "+pengirim
+
+let url="https://wa.me/?text="+mesej
+
+window.open(url)
+
+}
+
+function confetti(){
+
+for(let i=0;i<60;i++){
+
+let c=document.createElement("div")
+
+c.classList.add("confetti")
+
+c.style.left=Math.random()*100+"vw"
+
+c.style.background="hsl("+Math.random()*360+"deg,100%,50%)"
+
+c.style.animationDuration=(Math.random()*3+2)+"s"
+
+document.body.appendChild(c)
+
+}
+
+}
+
+confetti()
+
+</script>
+
+</body>
+</html>
